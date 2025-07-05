@@ -45,17 +45,9 @@ function replacer(string, keyboardMap) {
     }
     return newString;
 }
-// console.log(string);
-// console.log(replacer(string, keyboardMap));
+console.log(string);
+console.log(replacer(string, keyboardMap));
 
-// let str = 'dsnfyyz';
-// console.log(str);
-// console.log(replacer(str, keyboardMap));
-
-
-let string2 = 'ghbdsn';
-console.log(string2);
-console.log(replacer(string2, keyboardMap));
-
-
-//gjzcytyyz
+let str = 'dsnfyyz';
+console.log(str);
+console.log(replacer(str, keyboardMap));

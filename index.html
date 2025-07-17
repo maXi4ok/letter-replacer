@@ -4,10 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            color: light;
+            padding: 5%;
+            background-color: palegoldenrod;
+        }
+        div{
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        button{
+            background-color: lightgray;
+            width: 100px;
+            border: 1px solid;
+            padding: 15px 10px;
+            font-size: 10px;
+        }
+        #ukrToEng{
+            border-radius: 0 50px 50px 0;
+        }
+        #engToUkr{
+            border-radius: 50px 0 0 50px;
+        }
+    </style>
 </head>
 <body>
-
-    <h1 id="h"></h2>
+    <div>
+        <button id="engToUkr">ENG → UKR</button>
+        <button id="ukrToEng">UKR → ENG</button>
+    </div>
+    <label for="inputUncorrectWord">Введіть неправильне слово:</label>
+    <input type="text" id="inputUncorrectWord">
+    <p>Отримайте правильне слово:</p>
+    <p id="correctedWord"></p>
     <script src="main.js">
 
     </script>

@@ -1,7 +1,8 @@
-
-const keyboardMap = {
+const engToUkr = {
+    q: 'й', Q: 'Й',
+    w: 'ц', W: 'Ц',
     f: 'а', F: 'А',
-    j: 'й', J: 'Й',
+    j: 'о', J: 'О',
     k: 'л', K: 'Л',
     v: 'м', V: 'М',
     e: 'у', E: 'У',
@@ -30,24 +31,50 @@ const keyboardMap = {
     m: 'ь', M: 'Ь',
     ',': 'б', '<': 'Б',
     '.': 'ю', '>': 'Ю',
-    '/': '.', '?': ','
+    '/': '.', '?': ',',
+    '@': '"', '#': '№',
+    '$': ';', '^': ':',
+    '&': '?'
 };
+let ukrToEng = {};
+for (const key in engToUkr) {
+    let value = engToUkr[key]
+    ukrToEng[value] = key;
+}
 
-let string = 'ghbdsn';
-function replacer(string, keyboardMap) {
-    let newString = '';
-    for (const char of string) {
-        if (keyboardMap.hasOwnProperty(char)) {
-            newString += keyboardMap[char];
+
+
+let input = document.getElementById('inputUncorrectWord');
+let p = document.getElementById('correctedWord');
+let btnEngToUkr = document.getElementById('engToUkr');
+let btnUkrToEng = document.getElementById('ukrToEng');
+
+let currentMap = engToUkr;
+
+btnEngToUkr.addEventListener('click', function (ev) {
+    currentMap = engToUkr;
+    btnEngToUkr.style.background = 'lightgray';
+    btnUkrToEng.style.background = 'gray';
+});
+btnUkrToEng.addEventListener('click', function (ev) {
+    currentMap = ukrToEng;
+    btnEngToUkr.style.background = 'gray';
+    btnUkrToEng.style.background = 'lightgray';
+});
+
+function replacer(text) {
+    let result = '';
+    for (const char of text) {
+        if (currentMap.hasOwnProperty(char)) {
+            result += currentMap[char];
         } else {
-            newString += char;
+            result += char;
         }
     }
-    return newString;
-}
-console.log(string);
-console.log(replacer(string, keyboardMap));
+    return result;
+};
+input.addEventListener('input', function (ev) {
+    let corrected = replacer(input.value);
+    p.textContent = corrected;
+});
 
-let str = 'dsnfyyz';
-console.log(str);
-console.log(replacer(str, keyboardMap));
